@@ -146,6 +146,47 @@
                 "-" + thirdPart.join("");
             console.log(phoneNumber);
         }
+
+        /*
+          The function takes in 2 inputs x and y, and should
+          return x to the power of y
+
+          Simple, right? But you're NOT allowed to use Math.pow();
+
+          Obs: x and y will be naturals, so DON'T take fractions
+          into consideration;
+
+          Note : zero to the power of zero equals one in this kata
+
+          Great coding <3
+        */
+        var x = +prompt("Введите х", "");
+        var y = +prompt("Введите y", "");
+
+        /*
+          Проверка на то, не было ли введено дробное число.
+        */
+        if (x % 1 === 0 && y % 1 === 0) {
+            console.log(pow(x, y));
+        } else {
+            console.log("Числа не целые");
+        }
+
+        /*
+          В функции объявляем переменную result равную x, где
+          мы будем хранить результат итерации. Цикл начинается
+          с единицы, потому что первая итерация (x^1) известна
+          по условию и остается y-1 итераций.
+        */
+        function pow(x, y) {
+            var result = x;
+
+            for (var i = 1; i < y; i++){
+                result *=x;
+            }
+
+            return result;
+        }
     </script>
 </body>
 </html>
