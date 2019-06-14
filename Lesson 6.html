@@ -121,6 +121,31 @@
                 outside + " пассажиров из " + wait;
             return output;
         }
+
+        /*
+          createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
+          // => returns "(123) 456-7890"
+        */
+        var arrayNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+        createPhoneNumber(arrayNumber);
+
+        /*
+          В функции мы объявляем три переменные, каждая из
+          которых содержит равное кол-во эл-ов, получаемых
+          из массива с помощью метода splice(), после чего
+          мы по требуемому формату соединяем части в одну
+          строку, в ходе чего преобразуем части массива в
+          строки с помощью метода join().
+        */
+        function createPhoneNumber(arrayNumber) {
+            var firstPart = arrayNumber.splice(0, 3);
+            var secondPart = arrayNumber.splice(0, 3);
+            var thirdPart = arrayNumber.splice(0, 3);
+            var phoneNumber = "(" + firstPart.join("") +
+                ") " + secondPart.join("") +
+                "-" + thirdPart.join("");
+            console.log(phoneNumber);
+        }
     </script>
 </body>
 </html>
