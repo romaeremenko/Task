@@ -77,6 +77,50 @@
         function drunkLiters(time) {
             return Math.floor(time * 0.5);
         }
+
+        /*
+          Bob is working as a bus driver. However, he has become
+          extremely popular amongst the city's residents. With so
+          many passengers wanting to get aboard his bus, he sometimes
+          has to face the problem of not enough space left on the bus!
+          He wants you to write a simple program telling him if he
+          will be able to fit all the passengers.
+
+          You have to write a function that accepts three parameters:
+
+          1) cap is the amount of people the bus can hold excluding
+          the driver.
+          2) on is the number of people on the bus.
+          3) wait is the number of people waiting to get on to the bus.
+          If there is enough space, return 0, and if there isn't,
+          return the number of passengers he can't take
+        */
+
+        var cap = +prompt("Сколько людей вмещает автобус," +
+            " включая водителя?", "");
+        var on = +prompt("Сколько людей в автобусе?", "");
+        var wait = +prompt("Сколько людей ожидают автобус?", "");
+
+        console.log(enought(cap, on, wait));
+
+        function enought(cap, on, wait) {
+            var output;
+            var outside = (on + wait) - cap;
+
+            if (on > cap) {
+                output = "Неверно, людей в автобусе больше, " +
+                    "чем он вмещает";
+                return output;
+            } else if (cap == on + wait) {
+                output = "0, он может вместить всех" + wait +
+                    "пассажиров";
+                return output;
+            }
+
+            output = outside + ", он не может вместить " +
+                outside + " пассажиров из " + wait;
+            return output;
+        }
     </script>
 </body>
 </html>
