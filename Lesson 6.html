@@ -187,6 +187,48 @@
 
             return result;
         }
+
+        /*
+          Americans are odd people: in their buildings,
+          the first floor is actually the ground floor
+          and there is no 13th floor ('cause of superstition).
+
+          Write a function that given an American floor
+          (passed as an integer) returns the real floor.
+
+          Moreover, your function should work for basement
+          floors too: just return the same value as the
+          passed one.
+        */
+        var floor = +prompt("Введите этаж", "");
+
+        /*
+          Проверка на то, целое ли число.
+        */
+        if (floor % 1 === 0) {
+            console.log(getRealFloor(floor));
+        } else {
+            console.log("Число не целое");
+        }
+
+        /*
+          В функции мы используем if else, которые:
+          - возвращают этаж, если этаж меньше или равен 0
+          - возвращают этаж - 1, если этаж меньше 12
+          - возвращают этаж - 2, если этаж больше 12
+        */
+        function getRealFloor(floor) {
+
+            if (floor <= 0) {
+                floor = floor;
+            } else if (floor < 12) {
+                floor -= 1;
+            } else {
+                floor -= 2;
+            }
+
+            return floor;
+        }
     </script>
 </body>
 </html>
