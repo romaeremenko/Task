@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // The first century spans from the year 1 up to
+        //and including the year 100, The second - from
+        //the year 101 up to and including the year 200, etc.
+
+        var year = 2000;
+
+        console.log(centuryFromYear(year));
+
+        function centuryFromYear(year) {
+            var century = 0;
+
+            for (var i = 0; i < year; i += 100) {
+                century++;
+            }
+
+            return century;
+        }
+
+        // Simple, remove the spaces from the string,
+        // return the resultant string.
+
+        var string = "Hello Привет Hi";
+
+        console.log(removeSpace(string));
+
+        function removeSpace(string) {
+            var newString = string.split(' ');
+            return newString.join('');
+        }
+
+        // Simple, remove the spaces from the string,
+        // return the resultant string.
+
+        var string = "Hello";
+
+        console.log(removeCharacters(string));
+
+        function removeCharacters(string) {
+            var newString = "";
+
+            for (var i = 1; i < string.length - 1; i++) {
+                newString += string[i];
+            }
+
+            return newString;
+        }
+    </script>
+</body>
+</html>
