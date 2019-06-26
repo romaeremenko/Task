@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //Pete likes to bake some cakes. He has some recipes and ingredients.
+        // Unfortunately he is not good in maths. Can you help him to find out,
+        // how many cakes he could bake considering his recipes?
+        //Write a function cakes(), which takes the recipe (object) and the available
+        // ingredients (also an object) and returns the maximum number of cakes
+        // Pete can bake (integer). For simplicity there are no units for
+        // the amounts (e.g. 1 lb of flour or 200 g of sugar are simply 1 or 200).
+        // Ingredients that are not present in the objects, can be considered as 0.
+        var recipe = {apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100};
+        var available = {sugar: 500, flour: 2000, milk: 2000};
+
+        console.log(cakes(recipe, available));
+
+        function cakes(recipe, available) {
+            var result = 0;
+
+            //С помощью for in проходим по свойствам объекта. Далее делим ингридиенты
+            //из доступных на те, что есть в рецепты, чтобы узнать сколько раз мы
+            // можем его использовать для рецепта. Получаем целое число и...
+            for(var key in recipe) {
+                var counter = Math.floor(available[key] / recipe[key]);
+
+                //...сначала проверяем, можем ли мы полностью использовать ингридиент
+                // в рецепте (>=1), если нет, то возращаем ноль (раз). Затем условие,
+                // если до этого мы ничего не записывали в результат (сколько раз мы можем
+                // приготовить пирог),или если полученный результат кол-ва повторного
+                // использования продуктов меньше предыдущего результата, то полученный
+                // результат станет текущим.
+                if(counter >= 1) {
+                    if(result == 0 || counter < result) {
+                        result = counter;
+                    }
+                } else {
+                    return 0;
+                }
+
+            }
+
+            return result;
+        }
+
+        //Complete the method/function so that it converts dash/underscore delimited
+        // words into camel casing. The first word within the output should
+        // be capitalized only if the original word was capitalized (known as
+        // Upper Camel Case, also often referred to as Pascal case).
+        var str = prompt("Введите строку","");
+        console.log(toCamelCase(str));
+
+        // В функции сначала идёт проверка на пустую строку, мы возращаем её, если передаётся.
+        // Далее с помощью метода indexOf() ищем подстроку "-", если она есть, то применяется метод
+        // split(), разбивающий по раздилителю "-". Если подстрока не найдена, то метод split()
+        // разбивает по раздилителю "_".
+        //
+        // Далее мы возвращаем результат строки, к которому применяется метод map().
+        // По условию, если первая буква в первом слове не заглавная,мы её оставляем в нижнем регистре,
+        // поэтому в условии проверяется - если это первая часть строки, то возвращаем её без изменений,
+        // в остальных к первой букве применяем toUpperCase() и методом slice() добавляем часть
+        // строки после первой буквы. Затем применяем к массиву метод join(""), чтобы вернуть из
+        // элементов цельную строку.
+        function toCamelCase(str) {
+            if (str === "") return str;
+            var s = (str.indexOf("-") >= 0) ? str.split("-") : str.split("_");
+            return s.map((x, y) => y == 0 ? x : x[0].toUpperCase() + x.slice(1)).join("");
+        }
+    </script>
+</body>
+</html>
