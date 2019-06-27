@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Написать ф-цию проверки на монотонность
+    var arr = [1, 1, 2, 1];
+
+    function monotone(arr) {
+        var k = arr.map((i, k) => arr [k] <= arr[k + 1] ? true : false);
+        var m = k.filter((x, i) => k.indexOf(x) == i && k.lastIndexOf(x) != i);
+        return m.length != 1 ? false : true;
+    }
+
+    console.log(monotone(arr));
+
+    //Написать ф-цию, которая будет может вызываться неограниченное количество раз
+    // в виде multipleSum(1)(2)(3)(4)(5)()
+    function multipleSum(x) {
+        var x1 = x;
+
+        function sum(y) {
+            x1 += y;
+            return sum;
+        }
+
+        sum.toString = function () {
+            return x1;
+        };
+
+        return sum;
+    }
+
+    console.log(multipleSum(1)(2)(2));
+</script>
+</body>
+</html>
