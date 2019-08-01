@@ -1,0 +1,48 @@
+//1. Промисифицировать ф-цию из библиотеки FS
+
+fs.readFile(filename, (err, data) => {
+    return new Promise(function (resolve, reject) {
+        if (err) reject(err)
+        else resolve(data)
+    })
+});
+
+//2. Напишите функцию, принимающую на вход строку, и ...
+function firstNonRepeatingLetter(string) {
+    var stringLowerCase = string.toLowerCase();
+
+    for (var i = 0; i < string.length; i++) {
+        var letter = stringLowerCase.charAt(i);
+        if (stringLowerCase.indexOf(c) == i && stringLowerCase.indexOf(c, i + 1) == -1) return string.charAt(i);
+    }
+
+    return '';
+}
+
+//3. Напишите код функции sum, количество слагаемых не ограничено
+function sum(x) {
+    var x1 = x;
+
+    function sum(y) {
+        x1 += y;
+        return sum;
+    }
+
+    sum.toString = function () {
+        return x1;
+    };
+    return sum;
+}
+
+
+
+//codewars.com/kata/5ce399e0047a45001c853c2b
+function partsSums(ls) {
+    let sumArr = [0];
+    let sum = 0;
+    for (let i = ls.length - 1; i >= 0; i--) {
+        sum += ls[i];
+        sumArr.push(sum);
+    }
+    return sumArr.reverse();
+}
